@@ -1,0 +1,76 @@
+name: Release
+
+# Publie une version : pousse un tag « v2.6.0 » et la CI fait le reste.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Vérifier que dist/ est à jour
+        run: node tools/build.mjs --check
+
+      - name: Vérifier que le tag correspond au fichier VERSION
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          FILE="$(cat VERSION)"
+          if [ "$TAG" != "$FILE" ]; then
+            echo "::error::le tag $TAG ne correspond pas à VERSION ($FILE)"
+            exit 1
+          fi
+
+      - name: Installer Playwright
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Tests de bout en bout
+        run: npm test
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Restaurer la clé de signature
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ]; then
+            echo "::error::secret KEYSTORE_B64 absent — voir README, section « Publier une version »"
+            exit 1
+          fi
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/iron-release.jks"
+
+      - name: Compiler l'APK signé
+        working-directory: android
+        env:
+          KEYSTORE_FILE: ${{ runner.temp }}/iron-release.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --no-daemon -PghRepo=${{ github.repository }}
+
+      - name: Publier la release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: android/app/build/outputs/apk/release/*.apk
+          generate_release_notes: true
+          body: |
+            Installe l'APK ci-dessous, ou laisse l'app te proposer la mise à jour toute seule.
+
+            Les mises à jour s'installent par-dessus : programme, historique,
+            nutrition et pesées sont conservés.

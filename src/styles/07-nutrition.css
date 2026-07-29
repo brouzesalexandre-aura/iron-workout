@@ -1,0 +1,30 @@
+/* ---------- NUTRITION ---------- */
+  .macro-hero{background:linear-gradient(150deg,var(--bg3),var(--card));border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:16px}
+  .cal-ring-wrap{display:flex;align-items:center;gap:18px}
+  .ring{position:relative;width:118px;height:118px;flex-shrink:0}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .rc{fill:none;stroke-linecap:round}
+  .ring-ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .ring-ctr .big{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--text)}
+  .ring-ctr .lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+  .macro-bars{flex:1;display:flex;flex-direction:column;gap:11px;min-width:0}
+  .mbar .mtop{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}
+  .mbar .mtop b{font-weight:700}
+  .mbar .mtop span{color:var(--muted)}
+  .mtrack{height:7px;background:var(--bg);border-radius:5px;overflow:hidden}
+  .mfill{height:100%;border-radius:5px;transition:width .4s}
+  .meal-sec{margin-bottom:14px}
+  .meal-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 4px 8px;border-bottom:1px solid var(--border);margin-bottom:6px}
+  .meal-hd .mn{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+  .meal-hd .mn .ic{width:28px;height:28px;border-radius:9px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .meal-hd .mk{font-size:11px;color:var(--muted)}
+  .food-row{display:flex;align-items:center;gap:10px;padding:9px 4px}
+  .food-row:active{background:var(--bg3);border-radius:8px}
+  .food-row .fi{flex:1;min-width:0}
+  .food-row .fn{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .food-row .fq{font-size:11px;color:var(--muted);margin-top:1px}
+  .food-row .fc{text-align:right;flex-shrink:0}
+  .food-row .fc b{font-size:13px}
+  .food-row .fc small{font-size:9px;color:var(--muted);display:block}
+  .addmeal{width:100%;border:1px dashed var(--border);background:transparent;color:var(--muted);padding:9px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;margin-top:4px}
+  .addmeal:active{border-color:var(--green);color:var(--green)}

@@ -1,0 +1,18 @@
+/* ---------- DAY PILLS ---------- */
+  .pills{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;margin:0 -14px;padding-left:14px;padding-right:14px;scroll-snap-type:x proximity}
+  .pill{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:9px 15px;border-radius:40px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;flex-shrink:0;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:1px;min-width:64px}
+  .pill b{font-size:12px}
+  .pill small{font-size:9px;opacity:.7;font-weight:500}
+  .pill.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 16px rgba(232,67,45,.35)}
+  .pill.add{color:var(--green);border-style:dashed;justify-content:center;min-width:46px;font-size:20px}
+
+/* ---------- DAY HEADER ---------- */
+  .day-hdr{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .day-num{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.8;color:var(--red);opacity:.14;user-select:none}
+  .day-info{flex:1;min-width:0}
+  .day-info h3{font-family:'Bebas Neue',sans-serif;font-size:27px;letter-spacing:1px;line-height:1.05}
+  .day-info p{color:var(--muted);font-size:12px;margin-top:4px}
+  .badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:7px;letter-spacing:.4px}
+  .p1{background:rgba(232,67,45,.15);color:#FF7B6B;border:1px solid rgba(232,67,45,.3)}
+  .p2{background:rgba(243,156,18,.12);color:var(--gold);border:1px solid rgba(243,156,18,.3)}
+  .p3{background:rgba(78,155,255,.12);color:#7AB8FF;border:1px solid rgba(78,155,255,.3)}

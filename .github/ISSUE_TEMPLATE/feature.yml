@@ -1,0 +1,20 @@
+name: Évolution
+description: Une idée, une fonctionnalité à ajouter
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Le besoin
+      description: Qu'est-ce que tu cherches à faire, et qu'est-ce qui bloque aujourd'hui ?
+    validations: { required: true }
+  - type: textarea
+    id: idea
+    attributes:
+      label: Comment tu l'imagines
+      description: Facultatif — écran concerné, déroulé, exemple.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Partie concernée
+      options: [Programme, Séance, Charge musculaire, Exercices, Nutrition, Profil, Android, Autre]

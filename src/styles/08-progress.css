@@ -1,0 +1,56 @@
+/* ---------- PROGRESSION ---------- */
+  .mini-hd{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted);letter-spacing:1px;margin-bottom:9px}
+
+/* records récents */
+  .prlist{display:flex;flex-direction:column;gap:8px}
+  .prow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:12px 14px;cursor:pointer}
+  .prow:active{background:var(--card2)}
+  .pmedal{font-size:20px;line-height:1;flex:none}
+  .prow .pb{flex:1;min-width:0}
+  .prow .pb h4{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .prow .pb p{font-size:11px;color:var(--muted);margin-top:2px}
+  .prow .pv{flex:none;text-align:right;font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1;color:var(--green)}
+  .prow .pv small{display:block;font-family:'Inter',sans-serif;font-size:9px;color:var(--muted);letter-spacing:.4px}
+
+/* une ligne par exercice suivi */
+  .pgrow{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid var(--border);cursor:pointer}
+  .pgrow:active{background:var(--bg2)}
+  .pgspark{flex:none;width:60px;height:26px}
+  .pgspark svg{width:60px;height:26px;display:block}
+  .pgb{flex:1;min-width:0}
+  .pgb h4{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pgb p{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .pgv{flex:none;text-align:right}
+  .pgv b{display:block;font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:var(--text)}
+  .pgv b small{font-family:'Inter',sans-serif;font-size:10px;color:var(--muted)}
+  .pgd{font-size:10.5px;font-weight:700;color:var(--muted)}
+  .pgd.up{color:var(--green)}
+  .pgd.down{color:var(--gold)}
+
+/* courbe détaillée */
+  .pgchart{width:100%;height:auto;display:block;margin:2px 0 4px}
+  .pgchart .ax{font-family:'Inter',sans-serif;font-size:8.5px;fill:var(--muted)}
+  .chartleg{display:flex;justify-content:center;gap:16px;font-size:10.5px;color:var(--muted)}
+  .chartleg i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+
+/* tableaux de records et d'historique */
+  .reclist,.sesslist{display:flex;flex-direction:column}
+  .recrow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px}
+  .recrow span{color:var(--muted)}
+  .recrow b{font-weight:700;text-align:right}
+  .sesslist{max-height:270px;overflow-y:auto}
+  .prtag{display:inline-block;background:rgba(46,204,113,.16);color:var(--green);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:1px 5px;border-radius:5px;margin-left:5px}
+
+/* ---------- CONSEILS NUTRITION ---------- */
+  .tipcard{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:14px;margin-bottom:14px}
+  .tiphd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .tiphd h4{font-size:14px;font-weight:700}
+  .tiprow{display:flex;gap:10px;padding:8px 0}
+  .tiprow+.tiprow{border-top:1px solid var(--border)}
+  .tiprow h5{font-size:12.5px;font-weight:700;margin-bottom:2px}
+  .tiprow p{font-size:11.5px;line-height:1.55;color:var(--muted2)}
+  .tipic{flex:none;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:1px}
+  .tiprow.ok .tipic{background:rgba(46,204,113,.18);color:var(--green)}
+  .tiprow.info .tipic{background:rgba(78,155,255,.18);color:var(--blue)}
+  .tiprow.warn .tipic{background:rgba(243,156,18,.18);color:var(--gold)}
+  .tiprow.bad .tipic{background:rgba(232,67,45,.18);color:var(--red)}

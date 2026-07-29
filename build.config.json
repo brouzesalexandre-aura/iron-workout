@@ -1,0 +1,48 @@
+{
+  "out": "dist/index.html",
+  "alsoCopyTo": [
+    "android/app/src/main/assets/index.html"
+  ],
+  "styles": [
+    "src/styles/01-tokens.css",
+    "src/styles/02-shell.css",
+    "src/styles/03-components.css",
+    "src/styles/04-program.css",
+    "src/styles/05-session.css",
+    "src/styles/06-load.css",
+    "src/styles/07-nutrition.css",
+    "src/styles/08-progress.css",
+    "src/styles/09-overrides.css"
+  ],
+  "scripts": [
+    "src/core/utils.js",
+    "src/core/loads.js",
+    "src/data/exercises-core.js",
+    "src/data/zones.js",
+    "src/data/exercises.js",
+    "src/data/exercises-legacy.js",
+    "src/data/programs.js",
+    "src/data/day-templates.js",
+    "src/data/foods.js",
+    "src/data/body-model.js",
+    "src/core/storage.js",
+    "src/core/state.js",
+    "src/core/media.js",
+    "src/core/update.js",
+    "src/ui/app.js",
+    "src/ui/modal.js",
+    "src/features/program.js",
+    "src/features/session.js",
+    "src/features/ask.js",
+    "src/features/fatigue.js",
+    "src/features/muscles.js",
+    "src/features/library.js",
+    "src/features/progress.js",
+    "src/features/nutrition.js",
+    "src/features/nutri-tips.js",
+    "src/features/profile.js",
+    "src/boot.js"
+  ],
+  "repo": "brouzesalexandre-aura/iron-workout",
+  "versionFile": "VERSION"
+}

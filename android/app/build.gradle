@@ -1,0 +1,73 @@
+plugins { id 'com.android.application' }
+
+/*
+ * Signature de release.
+ *
+ * En local, aucune clé n'est nécessaire : la variante debug suffit.
+ * En CI, les quatre variables d'environnement ci-dessous proviennent des
+ * secrets GitHub et permettent de produire un APK signé avec la même clé
+ * à chaque version — condition indispensable pour que la mise à jour
+ * s'installe par-dessus sans effacer les données.
+ */
+def ksFile = System.getenv('KEYSTORE_FILE')
+def hasKeystore = ksFile != null && !ksFile.isEmpty() && file(ksFile).exists()
+
+/* Version unique du projet, partagée avec la partie web (fichier VERSION à la racine) */
+def ironVersion = file('../../VERSION').text.trim()
+def ironCode = ironVersion.split('\\.').inject(0) { a, p -> a * 100 + (p as int) }
+
+/* Le dépôt interrogé pour les mises à jour. La CI le passe en -PghRepo ;
+   sinon on lit build.config.json, qui sert déjà de référence côté web. */
+def ironRepo = project.findProperty('ghRepo') ?:
+    new groovy.json.JsonSlurper().parse(file('../../build.config.json')).repo
+
+android {
+  namespace 'com.iron.muscu'
+  compileSdk 34
+
+  defaultConfig {
+    applicationId "com.iron.muscu"
+    minSdk 24
+    targetSdk 34
+    versionCode ironCode
+    versionName ironVersion
+    buildConfigField "String", "GH_REPO", "\"${ironRepo}\""
+  }
+
+  buildFeatures { buildConfig true }
+
+  signingConfigs {
+    if (hasKeystore) {
+      release {
+        storeFile file(ksFile)
+        storePassword System.getenv('KEYSTORE_PASSWORD')
+        keyAlias System.getenv('KEY_ALIAS')
+        keyPassword System.getenv('KEY_PASSWORD')
+      }
+    }
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      if (hasKeystore) signingConfig signingConfigs.release
+    }
+    debug { }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+
+  /* IRON-2.6.apk plutôt que app-release.apk */
+  applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+      output.outputFileName = "IRON-${variant.versionName}.apk"
+    }
+  }
+}
+
+dependencies {
+  implementation 'androidx.core:core:1.13.1'
+}

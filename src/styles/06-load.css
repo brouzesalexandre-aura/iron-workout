@@ -1,0 +1,39 @@
+/* ---------- CHARGE MUSCULAIRE ---------- */
+  .bodywrap{display:flex;gap:4px;justify-content:center}
+  .bodywrap.mini{max-width:320px;margin:0 auto}
+  .bodycol{flex:1;max-width:200px;text-align:center}
+  .bodylab{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .bodysvg{width:100%;display:block}
+  .bodyout{fill:#252b3d;stroke:#12151f;stroke-width:1.2}
+  .mz{stroke:#12151f;stroke-width:1.2;fill:#333a50;cursor:pointer;transition:fill .3s}
+  .mz:active{stroke:var(--text);stroke-width:2}
+  .bodysvg.mini .mz{cursor:default;fill:#2c3245}
+  .bodysvg.mini .mz.mp{fill:#E8432D}
+  .bodysvg.mini .mz.ms{fill:#F39C12}
+  .mlegend{display:flex;gap:18px;justify-content:center;margin:9px 0 14px;font-size:10.5px;color:var(--muted);font-weight:600}
+  .mlegend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:-1px}
+  .mlegend .lp{background:#E8432D}
+  .mlegend .ls{background:#F39C12}
+  .mmap{margin-top:10px}
+  .heatscale{display:flex;align-items:center;gap:8px;margin-top:10px;padding:0 4px;font-size:10px;color:var(--muted);font-weight:600}
+  .heatbar{flex:1;height:7px;border-radius:6px;background:linear-gradient(90deg,rgb(46,125,209),rgb(46,204,113) 25%,rgb(241,196,15) 50%,rgb(255,149,0) 75%,rgb(232,67,45))}
+  .rdy{display:flex;gap:10px;align-items:flex-start;padding:7px 0}
+  .rdy+.rdy{border-top:1px solid var(--border)}
+  .rdydot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
+  .rdy b{font-size:12px;font-weight:700}
+  .rdy p{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.5}
+  .zrow{display:grid;grid-template-columns:6px 1fr 46px;gap:11px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:7px;cursor:pointer}
+  .zrow:active{transform:scale(.99)}
+  .zbar{width:6px;height:34px;border-radius:4px;background:var(--bg3);overflow:hidden;position:relative}
+  .zfill{position:absolute;bottom:0;left:0;right:0;border-radius:4px;transition:height .3s}
+  .zmain b{display:block;font-size:13px;font-weight:700}
+  .zmain span{display:block;font-size:10.5px;color:var(--muted);margin-top:1px}
+  .zpct{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.5px;text-align:right}
+  .bigpct{width:74px;height:74px;border-radius:50%;border:3px solid;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:30px;flex-shrink:0}
+  .bigpct small{font-size:14px;margin-left:1px}
+  .setline{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+  .setline b{font-size:12.5px;font-weight:700;display:block}
+  .setline span{font-size:10.5px;color:var(--muted)}
+  .rsegs{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:3px;gap:3px;flex-shrink:0}
+  .rseg{width:34px;padding:6px 0;border:none;background:none;color:var(--muted);font-size:14px;font-weight:700;border-radius:7px;cursor:pointer}
+  .rseg.on{background:var(--red);color:#fff}

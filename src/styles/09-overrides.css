@@ -1,0 +1,5 @@
+/* ---------- 7 ONGLETS ---------- */
+  .tabbar{padding-left:0;padding-right:0}
+  .tab{font-size:8px;letter-spacing:0;padding:4px 0;gap:2px}
+  .tab svg{width:19px;height:19px}
+  @media (min-width:400px){ .tab{font-size:8.6px;letter-spacing:.1px} .tab svg{width:20px;height:20px} }

@@ -1,0 +1,29 @@
+name: Bug
+description: Quelque chose ne marche pas comme prévu
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Ce qui se passe
+      description: Décris le problème, et ce que tu attendais à la place.
+    validations: { required: true }
+  - type: textarea
+    id: steps
+    attributes:
+      label: Comment le reproduire
+      placeholder: |
+        1. Ouvrir l'onglet Séance
+        2. Valider une série
+        3. …
+  - type: input
+    id: version
+    attributes:
+      label: Version d'IRON
+      description: Visible dans le menu ⋯ → Version
+      placeholder: "2.6.0"
+  - type: input
+    id: device
+    attributes:
+      label: Appareil
+      placeholder: "Samsung S26 Ultra, Android 16"

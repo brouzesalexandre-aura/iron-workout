@@ -1,0 +1,30 @@
+/* ---------- 25 zones : label, abrégé, heures de récup à 100 %, séries pour saturer ---------- */
+const ZONES = [
+  {z:"neck",lab:"Cou",sh:"Cou",rec:36,cap:6},
+  {z:"traps",lab:"Trapèzes",sh:"Trapèzes",rec:48,cap:12},
+  {z:"midback",lab:"Rhomboïdes / trapèze moyen",sh:"Dos moyen",rec:60,cap:12},
+  {z:"delt_ant",lab:"Deltoïde antérieur",sh:"Delt. ant",rec:48,cap:10},
+  {z:"delt_lat",lab:"Deltoïde latéral",sh:"Delt. lat",rec:42,cap:12},
+  {z:"delt_post",lab:"Deltoïde postérieur",sh:"Delt. post",rec:42,cap:12},
+  {z:"pecs_up",lab:"Pectoraux supérieurs",sh:"Pecto haut",rec:60,cap:10},
+  {z:"pecs",lab:"Pectoraux",sh:"Pecto",rec:60,cap:12},
+  {z:"lats",lab:"Grand dorsal",sh:"Dorsaux",rec:72,cap:14},
+  {z:"lowback",lab:"Lombaires",sh:"Lombaires",rec:72,cap:8},
+  {z:"biceps",lab:"Biceps",sh:"Biceps",rec:48,cap:10},
+  {z:"triceps",lab:"Triceps",sh:"Triceps",rec:48,cap:12},
+  {z:"forearms",lab:"Avant-bras",sh:"Avant-bras",rec:30,cap:10},
+  {z:"abs_up",lab:"Abdominaux supérieurs",sh:"Abdos haut",rec:30,cap:10},
+  {z:"abs_low",lab:"Abdominaux inférieurs",sh:"Abdos bas",rec:30,cap:10},
+  {z:"obliques",lab:"Obliques / grand dentelé",sh:"Obliques",rec:30,cap:10},
+  {z:"glutes",lab:"Fessiers",sh:"Fessiers",rec:60,cap:12},
+  {z:"abductors",lab:"Moyen fessier / abducteurs",sh:"Abducteurs",rec:42,cap:8},
+  {z:"quads",lab:"Quadriceps",sh:"Quadriceps",rec:72,cap:14},
+  {z:"quads_med",lab:"Vaste interne",sh:"Vaste int.",rec:72,cap:10},
+  {z:"adductors",lab:"Adducteurs",sh:"Adducteurs",rec:48,cap:8},
+  {z:"hams",lab:"Ischio-jambiers",sh:"Ischios",rec:72,cap:10},
+  {z:"calves",lab:"Mollets (jumeaux)",sh:"Mollets",rec:30,cap:14},
+  {z:"soleus",lab:"Soléaire",sh:"Soléaire",rec:30,cap:12},
+  {z:"tibialis",lab:"Tibial antérieur",sh:"Tibial",rec:30,cap:8},
+];
+const ZMAPZ = Object.fromEntries(ZONES.map(z => [z.z, z]));
+const ZLABEL = k => (ZMAPZ[k] ? ZMAPZ[k].lab : k);

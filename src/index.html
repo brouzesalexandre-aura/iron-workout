@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0A0C12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IRON">
+<title>IRON · Muscu</title>
+<link rel="manifest" href="@@MANIFEST@@">
+<link rel="apple-touch-icon" href="@@APPLE_ICON@@">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@@STYLES@@
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <div>
+    <div class="title"><span class="logo">⬢</span><span id="barTitle">PROGRAMME</span></div>
+    <div class="sub" id="barSub">5 jours · Hypertrophie</div>
+  </div>
+  <div class="appbar-actions" id="barActions"></div>
+</header>
+
+<main class="screen">
+  <section class="view active" id="v-programme"></section>
+  <section class="view" id="v-seance"></section>
+  <section class="view" id="v-charge"></section>
+  <section class="view" id="v-exercices"></section>
+  <section class="view" id="v-progression"></section>
+  <section class="view" id="v-nutrition"></section>
+  <section class="view" id="v-profil"></section>
+</main>
+
+<div class="timerbar" id="timerbar">
+  <button class="tbtn" onclick="Timer.add(-15)">−15 s</button>
+  <span class="tt" id="timerTxt">01:30</span>
+  <button class="tbtn" onclick="Timer.add(15)">+15 s</button>
+  <button class="tbtn skip" onclick="Timer.stop()">Passer ▸</button>
+</div>
+
+<div class="diffask" id="diffask"></div>
+
+<button class="fab" id="fab" onclick="App.fab()" style="display:none"></button>
+
+<nav class="tabbar">
+  <button class="tab active" data-tab="programme" onclick="App.go('programme')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5h11M6.5 17.5h11M4 9v6M20 9v6M2 10.5v3M22 10.5v3"/></svg>
+    <span>Programme</span><span class="tdot"></span>
+  </button>
+  <button class="tab" data-tab="seance" onclick="App.go('seance')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 12.5H11l-1 9.5 8.5-11H12l1-9z"/></svg>
+    <span>Séance</span><span class="tdot"></span>
+  </button>
+  <button class="tab" data-tab="charge" onclick="App.go('charge')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2.2"/><path d="M9 8.5h6a1.5 1.5 0 0 1 1.5 1.5v4.5h-2L14 22h-1.6l-.4-5-.4 5H10l-.5-7.5h-2V10A1.5 1.5 0 0 1 9 8.5z"/></svg>
+    <span>Charge</span><span class="tdot"></span>
+  </button>
+  <button class="tab" data-tab="exercices" onclick="App.go('exercices')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    <span>Exercices</span><span class="tdot"></span>
+  </button>
+  <button class="tab" data-tab="progression" onclick="App.go('progression')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5.5-6 3.5 3.5L20.5 6"/><path d="M15.5 6h5v5"/></svg>
+    <span>Progrès</span><span class="tdot"></span>
+  </button>
+  <button class="tab" data-tab="nutrition" onclick="App.go('nutrition')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c0-3 2-5 5-5 0 3-2 5-5 5zM12 8c-1-4-5-4-6-2-2 3 0 8 2 11 1 1.5 2 2 4 2s3-.5 4-2c2-3 4-8 2-11-1-2-5-2-6 2z"/></svg>
+    <span>Nutrition</span><span class="tdot"></span>
+  </button>
+  <button class="tab" data-tab="profil" onclick="App.go('profil')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+    <span>Profil</span><span class="tdot"></span>
+  </button>
+</nav>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)Modal.close()">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+@@SCRIPTS@@
+</script>
+</body>
+</html>
