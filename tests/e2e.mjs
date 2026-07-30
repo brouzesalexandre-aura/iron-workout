@@ -54,6 +54,25 @@ check(!(await page.evaluate(
      return LIB.some(e => [...(e.zp||[]), ...(e.zs||[])].some(z => !ok.has(z))); })()`)),
   'aucune zone inconnue');
 
+/* Le visuel vient de free-exercise-db, dont les dossiers sont nommés en anglais
+   avec le matériel dedans. Un slug inventé n'affiche rien : on vérifie que les
+   corrections manuelles pointent sur des dossiers déjà utilisés ailleurs, et que
+   le matériel déclaré ne contredit pas le nom du dossier. */
+const img = await page.evaluate(`(() => {
+  const known = new Set(LIB.map(e => e.folder));
+  const CONTRA = { db:/Barbell|Cable_|Smith_|Kettlebell/, bb:/Dumbbell|Kettlebell/,
+                   cable:/Dumbbell|Kettlebell/, bw:/Dumbbell|Barbell|Cable_|Machine/ };
+  return {
+    fixOk: Object.values(FOLDER_FIX).every(f => known.has(f)),
+    contradictions: LIB.filter(e => CONTRA[e.eqt] && CONTRA[e.eqt].test(e.folder)).map(e => e.name),
+    sansVisuel: LIB.filter(e => !e.folder).length,
+  };
+})()`);
+check(img.fixOk, 'les images corrigées pointent sur des dossiers connus');
+check(img.contradictions.length === 0, 'aucun visuel ne contredit le matériel déclaré',
+  img.contradictions.join(', '));
+check(img.sansVisuel === 0, 'chaque exercice a un visuel');
+
 console.log('\n== Navigation ==');
 for (const tab of ['programme', 'seance', 'charge', 'exercices', 'progression', 'nutrition', 'profil']) {
   errors = [];
