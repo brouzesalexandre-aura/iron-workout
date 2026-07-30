@@ -157,7 +157,9 @@ suivant.
 ## Contribuer
 
 Les évolutions et les bugs se suivent dans les [issues](../../issues). Deux modèles sont
-proposés : *Bug* et *Évolution*.
+proposés : *Bug* et *Évolution*. Tout est dans [CONTRIBUTING.md](CONTRIBUTING.md) —
+notamment les deux règles qui font échouer une PR si on les ignore : `dist/index.html`
+est généré et versionné, et la version ne vit que dans `VERSION`.
 
 ## Crédits
 
