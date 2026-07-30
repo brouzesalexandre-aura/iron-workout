@@ -54,10 +54,14 @@ function build() {
 
 const html = build();
 
+/* La CI compile l'APK depuis les assets versionnés, sans repasser par ce script :
+   une copie oubliée embarquerait silencieusement une version périmée de l'app.
+   D'où la vérification de `out` ET de chaque destination de `alsoCopyTo`. */
 if (process.argv.includes('--check')) {
-  const cur = existsSync(join(ROOT, cfg.out)) ? read(cfg.out) : '';
-  if (cur !== html) {
-    console.error(`✗ ${cfg.out} n'est pas à jour — lance « npm run build » et commite le résultat.`);
+  const stale = [cfg.out, ...(cfg.alsoCopyTo || [])]
+    .filter((f) => (existsSync(join(ROOT, f)) ? read(f) : '') !== html);
+  if (stale.length) {
+    console.error(`✗ pas à jour : ${stale.join(', ')} — lance « npm run build » et commite le résultat.`);
     process.exit(1);
   }
   console.log(`✓ ${cfg.out} est à jour (${html.length} caractères)`);
