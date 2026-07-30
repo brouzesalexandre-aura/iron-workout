@@ -502,7 +502,7 @@
 
 /* ===== src/core/utils.js ===== */
 /* ---------- Helpers ---------- */
-const APP_VERSION = '2.6.0';
+const APP_VERSION = '2.6.1';
 const uid = () => 'x' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-3);
 const IMG = (folder, n) => `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${folder}/${n}.jpg`;
 const clone = o => JSON.parse(JSON.stringify(o));
@@ -551,7 +551,7 @@ const LIB = [
   // ---- PECTO ----
   {k:'db_bench',name:'Développé couché haltères',eq:'Haltères + banc plat',cat:'Pecto',folder:'Dumbbell_Bench_Press',mp:['Grand pectoral','Pectoral moyen'],ms:['Triceps','Deltoïde ant.'],tip:'Contrôle la descente sur 3 sec. Les haltères donnent plus d\'amplitude qu\'une barre.',ds:4,dr:'10–12',drest:90},
   {k:'incline_db',name:'Développé incliné haltères',eq:'Haltères + banc incliné 30°',cat:'Pecto',folder:'Incline_Dumbbell_Press',mp:['Pectoral supérieur'],ms:['Deltoïde ant.','Triceps'],tip:'Ne dépasse pas 30° d\'inclinaison sinon les épaules prennent le relais.',ds:4,dr:'10–12',drest:90},
-  {k:'cable_fly',name:'Écarté poulie basse',eq:'Double poulie écarté',cat:'Pecto',folder:'One-Arm_Flat_Bench_Dumbbell_Flye',mp:['Grand pectoral (étirement)'],ms:['Deltoïde ant.','Biceps stabilisateur'],tip:'Ressens bien l\'étirement en bas du mouvement. Bras légèrement fléchis tout au long.',ds:3,dr:'12',drest:75},
+  {k:'cable_fly',name:'Écarté aux poulies',eq:'Poulies vis-à-vis',cat:'Pecto',folder:'One-Arm_Flat_Bench_Dumbbell_Flye',mp:['Grand pectoral (étirement)'],ms:['Deltoïde ant.','Biceps stabilisateur'],tip:'Ressens bien l\'étirement en bas du mouvement. Bras légèrement fléchis tout au long.',ds:3,dr:'12',drest:75},
   {k:'bb_bench',name:'Développé couché barre',eq:'Barre + banc plat',cat:'Pecto',folder:'Barbell_Bench_Press_-_Medium_Grip',mp:['Grand pectoral'],ms:['Triceps','Deltoïde ant.'],tip:'Omoplates serrées, pieds ancrés au sol. Barre au niveau du bas des pectoraux.',ds:4,dr:'8–10',drest:120},
   {k:'pec_deck',name:'Écarté machine (Pec Deck)',eq:'Machine à pectoraux',cat:'Pecto',folder:'Butterfly',mp:['Grand pectoral'],ms:['Deltoïde ant.'],tip:'Serre les pectoraux 1 sec en position fermée. Mouvement d\'isolation pur.',ds:3,dr:'12–15',drest:60},
   {k:'pushup',name:'Pompes',eq:'Poids du corps',cat:'Pecto',folder:'Pushups',mp:['Grand pectoral'],ms:['Triceps','Deltoïde ant.','Gainage'],tip:'Corps gainé et aligné. Descends jusqu\'à frôler le sol.',ds:3,dr:'max',drest:60},
@@ -560,24 +560,24 @@ const LIB = [
   {k:'lat_close',name:'Tirage vertical prise serrée',eq:'Tirage vertical poulie',cat:'Dos',folder:'Close-Grip_Front_Lat_Pulldown',mp:['Grand dorsal (convergence)'],ms:['Biceps','Teres major'],tip:'Tire vers le sternum, coudes vers les hanches. Serre fort les dorsaux en bas.',ds:4,dr:'10–12',drest:90},
   {k:'seated_row',name:'Rowing assis poulie',eq:'Poulie basse / câble',cat:'Dos',folder:'Seated_Cable_Rows',mp:['Grand dorsal','Rhomboïdes'],ms:['Biceps','Trapèze moyen'],tip:'Serre les omoplates ensemble en fin de rep. Dos droit, ne te penche pas.',ds:4,dr:'12',drest:90},
   {k:'db_row',name:'Tirage buste penché haltères',eq:'Haltères debout penché',cat:'Dos',folder:'Bent_Over_Barbell_Row',mp:['Grand dorsal','Rhomboïdes'],ms:['Biceps','Deltoïde post.'],tip:'Torse proche du parallèle au sol = meilleur étirement dorsal.',ds:3,dr:'12',drest:75},
-  {k:'row_high',name:'Rowing poulie haute',eq:'Double poulie / câble',cat:'Dos',folder:'Seated_Cable_Rows',mp:['Rhomboïdes','Trapèze moyen'],ms:['Grand dorsal','Deltoïde post.'],tip:'"Casser une noix entre les omoplates" à chaque rep. Coudes en arrière.',ds:4,dr:'12',drest:90},
+  {k:'row_high',name:'Rowing poulie haute à genoux',eq:'Poulie haute, à genoux',cat:'Dos',folder:'Seated_Cable_Rows',mp:['Rhomboïdes','Trapèze moyen'],ms:['Grand dorsal','Deltoïde post.'],tip:'"Casser une noix entre les omoplates" à chaque rep. Coudes en arrière.',ds:4,dr:'12',drest:90},
   {k:'straight_arm',name:'Pull-over poulie haute',eq:'Poulie haute (corde)',cat:'Dos',folder:'Rope_Straight-Arm_Pulldown',mp:['Grand dorsal','Teres major'],ms:['Grand pectoral (longue portion)'],tip:'Bras tendus tout le long. Engage les dorsaux, pas les bras. Bel exercice de finition.',ds:3,dr:'12',drest:75},
   {k:'pullup',name:'Tractions',eq:'Barre de traction',cat:'Dos',folder:'Pullups',mp:['Grand dorsal'],ms:['Biceps','Rhomboïdes','Avant-bras'],tip:'Amplitude complète : bras tendus en bas, menton au-dessus de la barre en haut.',ds:4,dr:'max',drest:120},
   {k:'deadlift',name:'Soulevé de terre',eq:'Barre',cat:'Dos',folder:'Barbell_Deadlift',mp:['Érecteurs du rachis','Grand fessier'],ms:['Grand dorsal','Ischio-jambiers','Trapèzes'],tip:'Dos plat, barre collée aux jambes. Pousse le sol, ne "tire" pas avec le dos.',ds:4,dr:'6–8',drest:150},
   {k:'hyperext',name:'Hyperextensions lombaires',eq:'Banc à lombaires',cat:'Dos',folder:'Hyperextensions_Back_Extensions',mp:['Érecteurs du rachis'],ms:['Fessiers','Ischio-jambiers'],tip:'Monte jusqu\'à l\'alignement du corps, pas en hyperextension excessive.',ds:3,dr:'15',drest:60},
   // ---- ÉPAULES ----
-  {k:'lat_raise',name:'Élévations latérales',eq:'Haltères debout',cat:'Épaules',folder:'Cable_Seated_Lateral_Raise',mp:['Deltoïde médial'],ms:['Deltoïde ant.','Trapèze sup.'],tip:'Lève jusqu\'à l\'horizontale. Pouce légèrement vers le bas = plus de médial. 2 sec en haut.',ds:4,dr:'12',drest:60},
+  {k:'lat_raise',name:'Élévations latérales haltères',eq:'Haltères, debout ou assis',cat:'Épaules',folder:'Cable_Seated_Lateral_Raise',mp:['Deltoïde médial'],ms:['Deltoïde ant.','Trapèze sup.'],tip:'Lève jusqu\'à l\'horizontale. Pouce légèrement vers le bas = plus de médial. 2 sec en haut.',ds:4,dr:'12',drest:60},
   {k:'sh_press',name:'Développé militaire haltères',eq:'Haltères assis',cat:'Épaules',folder:'Seated_Dumbbell_Press',mp:['Deltoïde ant.','Deltoïde médial'],ms:['Triceps','Trapèze'],tip:'Exercice de base épaule. Évite de verrouiller les coudes. Ventre rentré, dos droit.',ds:4,dr:'10–12',drest:90},
-  {k:'front_raise',name:'Élévations frontales poulie',eq:'Poulie basse câble',cat:'Épaules',folder:'Front_Raise_And_Pullover',mp:['Deltoïde antérieur'],ms:['Pectoral sup.','Trapèze'],tip:'Monte jusqu\'à la hauteur des yeux max. Pas besoin d\'aller plus haut.',ds:3,dr:'12',drest:60},
+  {k:'front_raise',name:'Élévation frontale + pull-over',eq:'Haltère à deux mains',cat:'Épaules',folder:'Front_Raise_And_Pullover',mp:['Deltoïde antérieur'],ms:['Pectoral sup.','Trapèze'],tip:'Monte jusqu\'à la hauteur des yeux max. Pas besoin d\'aller plus haut.',ds:3,dr:'12',drest:60},
   {k:'rear_delt',name:'Écarté poulie deltoïde post.',eq:'Poulies croisées',cat:'Épaules',folder:'Cable_Rear_Delt_Fly',mp:['Deltoïde postérieur'],ms:['Rhomboïdes','Teres minor'],tip:'Bras croisés devant au départ, ouvre en grand arc. Tension constante grâce au câble.',ds:3,dr:'12',drest:75},
   {k:'face_pull',name:'Face pull',eq:'Poulie haute',cat:'Épaules',folder:'Face_Pull',mp:['Deltoïde post.','Trapèze moyen'],ms:['Rhomboïdes','Rotateurs épaule'],tip:'Tire vers le visage, coudes hauts. Rotation externe en fin = santé épaule.',ds:3,dr:'15',drest:60},
   {k:'ext_rot',name:'Rotation externe haltère',eq:'Haltère léger',cat:'Épaules',folder:'External_Rotation',mp:['Infra-épineux','Petit rond'],ms:['Coiffe des rotateurs'],tip:'Charge très légère, coude collé au corps à 90°, seul l\'avant-bras pivote. Essentiel pour la santé de l\'épaule.',ds:3,dr:'15',drest:45},
-  {k:'shrug',name:'Shrugs haltères',eq:'Haltères debout',cat:'Trapèzes',folder:'Barbell_Shrug_Behind_The_Back',mp:['Trapèze supérieur'],ms:['Élévateur scapula'],tip:'Monte droit vers le ciel (pas en rotation). Maintiens 1 sec en haut. Lent en descente.',ds:4,dr:'12–15',drest:60},
+  {k:'shrug',name:'Shrugs barre dans le dos',eq:'Barre derrière les cuisses',cat:'Trapèzes',folder:'Barbell_Shrug_Behind_The_Back',mp:['Trapèze supérieur'],ms:['Élévateur scapula'],tip:'Monte droit vers le ciel (pas en rotation). Maintiens 1 sec en haut. Lent en descente.',ds:4,dr:'12–15',drest:60},
   {k:'ohp_bb',name:'Développé militaire barre',eq:'Barre debout',cat:'Épaules',folder:'Standing_Military_Press',mp:['Deltoïde ant.','Deltoïde médial'],ms:['Triceps','Gainage'],tip:'Gaine les abdos, ne cambre pas. Barre passe devant le visage puis au-dessus de la tête.',ds:4,dr:'8–10',drest:120},
   // ---- BICEPS ----
-  {k:'ez_curl',name:'Curl barre EZ incliné',eq:'Banc incliné + haltères',cat:'Biceps',folder:'EZ-Bar_Curl',mp:['Biceps (longue portion)','Brachial'],ms:['Brachioradial'],tip:'Banc incliné = étirement max de la longue portion. Coudes fixes derrière le corps.',ds:4,dr:'10–12',drest:75},
+  {k:'ez_curl',name:'Curl barre EZ',eq:'Barre EZ, debout',cat:'Biceps',folder:'EZ-Bar_Curl',mp:['Biceps (longue portion)','Brachial'],ms:['Brachioradial'],tip:'Coudes collés au corps et fixes : si ils partent en avant, ce sont les épaules qui travaillent.',ds:4,dr:'10–12',drest:75},
   {k:'conc_curl',name:'Curl haltères concentré',eq:'Assis, coude sur cuisse',cat:'Biceps',folder:'Concentration_Curls',mp:['Biceps (pic)','Brachial'],ms:[],tip:'Serre fort en haut, maintiens 1 sec. Isolation totale — ne triche pas avec l\'épaule.',ds:3,dr:'12/côté',drest:60},
-  {k:'cable_curl',name:'Curl poulie basse',eq:'Poulie basse câble',cat:'Biceps',folder:'Standing_One-Arm_Cable_Curl',mp:['Biceps brachial'],ms:['Brachioradial','Brachial'],tip:'Le câble maintient la tension même en bas — avantage sur les haltères.',ds:3,dr:'12',drest:60},
+  {k:'cable_curl',name:'Curl poulie basse unilatéral',eq:'Poulie basse, un bras',cat:'Biceps',folder:'Standing_One-Arm_Cable_Curl',mp:['Biceps brachial'],ms:['Brachioradial','Brachial'],tip:'Le câble maintient la tension même en bas — avantage sur les haltères.',ds:3,dr:'12',drest:60},
   {k:'hammer',name:'Curl marteau',eq:'Haltères',cat:'Biceps',folder:'Hammer_Curls',mp:['Brachioradial','Brachial'],ms:['Biceps'],tip:'Prise neutre (paumes face à face). Cible l\'épaisseur du bras et l\'avant-bras.',ds:3,dr:'12',drest:60},
   {k:'preacher',name:'Curl pupitre',eq:'Banc Larry Scott',cat:'Biceps',folder:'Preacher_Curl',mp:['Biceps (courte portion)'],ms:['Brachial'],tip:'Ne décolle pas les bras du pupitre. Contrôle la descente, ne verrouille pas en bas.',ds:3,dr:'10–12',drest:75},
   // ---- TRICEPS ----
@@ -588,9 +588,9 @@ const LIB = [
   {k:'bench_dip',name:'Dips sur banc',eq:'Banc',cat:'Triceps',folder:'Bench_Dips',mp:['Triceps'],ms:['Deltoïde ant.','Pectoral bas'],tip:'Dos proche du banc, descends jusqu\'à 90° au coude. Lest sur les cuisses pour progresser.',ds:3,dr:'12–15',drest:60},
   // ---- JAMBES ----
   {k:'squat',name:'Squat barre',eq:'Cage à squat',cat:'Jambes',folder:'Barbell_Squat',mp:['Quadriceps','Grand fessier'],ms:['Ischio-jambiers','Lombaires'],tip:'Cuisses au moins parallèles au sol. Genoux dans l\'axe des pieds. Respire fort avant la descente.',ds:4,dr:'10–12',drest:120},
-  {k:'leg_press',name:'Presse à cuisse',eq:'Presse à cuisse',cat:'Jambes',folder:'Smith_Machine_Leg_Press',mp:['Quadriceps'],ms:['Fessiers','Ischio-jambiers'],tip:'Pieds bas = quad. Pieds hauts = fessier. Ne verrouille jamais les genoux en haut.',ds:4,dr:'12',drest:90},
+  {k:'leg_press',name:'Presse à cuisse (Smith)',eq:'Presse à cuisse',cat:'Jambes',folder:'Smith_Machine_Leg_Press',mp:['Quadriceps'],ms:['Fessiers','Ischio-jambiers'],tip:'Pieds bas = quad. Pieds hauts = fessier. Ne verrouille jamais les genoux en haut.',ds:4,dr:'12',drest:90},
   {k:'leg_ext',name:'Leg extension',eq:'Machine leg extension',cat:'Jambes',folder:'Leg_Extensions',mp:['Quadriceps (isolation)'],ms:[],tip:'Maintiens 1 sec en haut. Lent en descente. Idéal après squat pour finir les quadriceps.',ds:3,dr:'12',drest:75},
-  {k:'rdl',name:'Soulevé de terre jambes tendues',eq:'Haltères',cat:'Jambes',folder:'Stiff-Legged_Dumbbell_Deadlift',mp:['Ischio-jambiers','Grand fessier'],ms:['Lombaires'],tip:'Genoux légèrement fléchis, dos plat. Pousse les hanches en arrière, ce n\'est pas un squat.',ds:3,dr:'12',drest:75},
+  {k:'rdl',name:'Soulevé jambes tendues haltères',eq:'Haltères',cat:'Jambes',folder:'Stiff-Legged_Dumbbell_Deadlift',mp:['Ischio-jambiers','Grand fessier'],ms:['Lombaires'],tip:'Genoux légèrement fléchis, dos plat. Pousse les hanches en arrière, ce n\'est pas un squat.',ds:3,dr:'12',drest:75},
   {k:'leg_curl',name:'Curl ischio couché',eq:'Machine ou câble',cat:'Jambes',folder:'Lying_Leg_Curls',mp:['Ischio-jambiers'],ms:['Gastrocnémien'],tip:'Lent en descente (3 sec). Ne laisse pas les hanches se soulever.',ds:3,dr:'12',drest:75},
   {k:'lunge',name:'Fentes haltères',eq:'Haltères',cat:'Jambes',folder:'Dumbbell_Lunges',mp:['Quadriceps','Grand fessier'],ms:['Ischio-jambiers','Adducteurs'],tip:'Grand pas, genou arrière vers le sol. Buste droit, poussée sur le talon avant.',ds:3,dr:'12/jambe',drest:75},
   {k:'hip_thrust',name:'Hip thrust barre',eq:'Banc + barre',cat:'Fessiers',folder:'Barbell_Hip_Thrust',mp:['Grand fessier'],ms:['Ischio-jambiers','Adducteurs'],tip:'Pousse les hanches jusqu\'à alignement avec les épaules. Contracte fort en haut, 2 sec.',ds:4,dr:'12',drest:90},
@@ -845,11 +845,11 @@ const ZMAP = {
   hyperext:{eqt:"bw",zp:["lowback"],zs:["glutes", "hams"],mp:["Lombaires"],ms:["Fessiers", "Ischio-jambiers"]},
   lat_raise:{eqt:"db",zp:["delt_lat"],zs:["delt_ant", "traps"],mp:["Deltoïde latéral"],ms:["Deltoïde antérieur", "Trapèzes"]},
   sh_press:{eqt:"db",zp:["delt_ant", "delt_lat"],zs:["triceps", "traps"],mp:["Deltoïde antérieur", "Deltoïde latéral"],ms:["Triceps", "Trapèzes"]},
-  front_raise:{eqt:"cable",zp:["delt_ant"],zs:["pecs", "traps"],mp:["Deltoïde antérieur"],ms:["Pectoraux", "Trapèzes"]},
+  front_raise:{eqt:"db",zp:["delt_ant"],zs:["pecs", "traps"],mp:["Deltoïde antérieur"],ms:["Pectoraux", "Trapèzes"]},
   rear_delt:{eqt:"cable",zp:["delt_post"],zs:["midback", "traps"],mp:["Deltoïde postérieur"],ms:["Rhomboïdes / trapèze moyen", "Trapèzes"]},
   face_pull:{eqt:"cable",zp:["delt_post", "traps"],zs:["midback"],mp:["Deltoïde postérieur", "Trapèzes"],ms:["Rhomboïdes / trapèze moyen"]},
   ext_rot:{eqt:"db",zp:["delt_post"],zs:[],mp:["Deltoïde postérieur"],ms:[]},
-  shrug:{eqt:"db",zp:["traps"],zs:["forearms"],mp:["Trapèzes"],ms:["Avant-bras"]},
+  shrug:{eqt:"bb",zp:["traps"],zs:["forearms"],mp:["Trapèzes"],ms:["Avant-bras"]},
   ohp_bb:{eqt:"bb",zp:["delt_ant", "delt_lat"],zs:["triceps", "abs_up", "abs_low"],mp:["Deltoïde antérieur", "Deltoïde latéral"],ms:["Triceps", "Abdominaux supérieurs", "Abdominaux inférieurs"]},
   ez_curl:{eqt:"ez",zp:["biceps"],zs:["forearms"],mp:["Biceps"],ms:["Avant-bras"]},
   conc_curl:{eqt:"db",zp:["biceps"],zs:["forearms"],mp:["Biceps"],ms:["Avant-bras"]},
@@ -877,7 +877,18 @@ const ZMAP = {
   crunch:{eqt:"bw",zp:["abs_up"],zs:["obliques", "abs_low"],mp:["Abdominaux supérieurs"],ms:["Obliques / grand dentelé", "Abdominaux inférieurs"]},
   leg_raise:{eqt:"bw",zp:["abs_low"],zs:["obliques", "quads", "abs_up", "quads_med"],mp:["Abdominaux inférieurs"],ms:["Obliques / grand dentelé", "Quadriceps", "Abdominaux supérieurs", "Vaste interne"]},
 };
-const FOLDER_FIX = {"lat_wide": "Wide-Grip_Lat_Pulldown", "pushdown": "Triceps_Pushdown_-_Rope_Attachment", "db_row": "Bent_Over_Two-Dumbbell_Row", "row_high": "Kneeling_High_Pulley_Row", "cable_fly": "Cable_Crossover", "calf": "Standing_Calf_Raises"};
+/* Visuels d'origine qui ne montraient pas le bon mouvement. Ne mettre ici que
+   des dossiers free-exercise-db déjà utilisés ailleurs dans la bibliothèque :
+   un slug inventé ne casse pas le build, il affiche juste un cadre vide. */
+const FOLDER_FIX = {
+  lat_wide:   'Wide-Grip_Lat_Pulldown',
+  pushdown:   'Triceps_Pushdown_-_Rope_Attachment',
+  db_row:     'Bent_Over_Two-Dumbbell_Row',
+  row_high:   'Kneeling_High_Pulley_Row',
+  cable_fly:  'Cable_Crossover',            // montrait un écarté haltère sur banc
+  lat_raise:  'Seated_Side_Lateral_Raise',  // montrait une poulie, pas des haltères
+  calf:       'Standing_Calf_Raises',
+};
 
 /* Fusionne : corrige les images, applique zones + matériel, puis concatène */
 LIB.forEach(e => {
