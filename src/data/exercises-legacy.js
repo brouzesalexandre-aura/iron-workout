@@ -17,11 +17,11 @@ const ZMAP = {
   hyperext:{eqt:"bw",zp:["lowback"],zs:["glutes", "hams"],mp:["Lombaires"],ms:["Fessiers", "Ischio-jambiers"]},
   lat_raise:{eqt:"db",zp:["delt_lat"],zs:["delt_ant", "traps"],mp:["Deltoïde latéral"],ms:["Deltoïde antérieur", "Trapèzes"]},
   sh_press:{eqt:"db",zp:["delt_ant", "delt_lat"],zs:["triceps", "traps"],mp:["Deltoïde antérieur", "Deltoïde latéral"],ms:["Triceps", "Trapèzes"]},
-  front_raise:{eqt:"cable",zp:["delt_ant"],zs:["pecs", "traps"],mp:["Deltoïde antérieur"],ms:["Pectoraux", "Trapèzes"]},
+  front_raise:{eqt:"db",zp:["delt_ant"],zs:["pecs", "traps"],mp:["Deltoïde antérieur"],ms:["Pectoraux", "Trapèzes"]},
   rear_delt:{eqt:"cable",zp:["delt_post"],zs:["midback", "traps"],mp:["Deltoïde postérieur"],ms:["Rhomboïdes / trapèze moyen", "Trapèzes"]},
   face_pull:{eqt:"cable",zp:["delt_post", "traps"],zs:["midback"],mp:["Deltoïde postérieur", "Trapèzes"],ms:["Rhomboïdes / trapèze moyen"]},
   ext_rot:{eqt:"db",zp:["delt_post"],zs:[],mp:["Deltoïde postérieur"],ms:[]},
-  shrug:{eqt:"db",zp:["traps"],zs:["forearms"],mp:["Trapèzes"],ms:["Avant-bras"]},
+  shrug:{eqt:"bb",zp:["traps"],zs:["forearms"],mp:["Trapèzes"],ms:["Avant-bras"]},
   ohp_bb:{eqt:"bb",zp:["delt_ant", "delt_lat"],zs:["triceps", "abs_up", "abs_low"],mp:["Deltoïde antérieur", "Deltoïde latéral"],ms:["Triceps", "Abdominaux supérieurs", "Abdominaux inférieurs"]},
   ez_curl:{eqt:"ez",zp:["biceps"],zs:["forearms"],mp:["Biceps"],ms:["Avant-bras"]},
   conc_curl:{eqt:"db",zp:["biceps"],zs:["forearms"],mp:["Biceps"],ms:["Avant-bras"]},
@@ -49,7 +49,18 @@ const ZMAP = {
   crunch:{eqt:"bw",zp:["abs_up"],zs:["obliques", "abs_low"],mp:["Abdominaux supérieurs"],ms:["Obliques / grand dentelé", "Abdominaux inférieurs"]},
   leg_raise:{eqt:"bw",zp:["abs_low"],zs:["obliques", "quads", "abs_up", "quads_med"],mp:["Abdominaux inférieurs"],ms:["Obliques / grand dentelé", "Quadriceps", "Abdominaux supérieurs", "Vaste interne"]},
 };
-const FOLDER_FIX = {"lat_wide": "Wide-Grip_Lat_Pulldown", "pushdown": "Triceps_Pushdown_-_Rope_Attachment", "db_row": "Bent_Over_Two-Dumbbell_Row", "row_high": "Kneeling_High_Pulley_Row", "cable_fly": "Cable_Crossover", "calf": "Standing_Calf_Raises"};
+/* Visuels d'origine qui ne montraient pas le bon mouvement. Ne mettre ici que
+   des dossiers free-exercise-db déjà utilisés ailleurs dans la bibliothèque :
+   un slug inventé ne casse pas le build, il affiche juste un cadre vide. */
+const FOLDER_FIX = {
+  lat_wide:   'Wide-Grip_Lat_Pulldown',
+  pushdown:   'Triceps_Pushdown_-_Rope_Attachment',
+  db_row:     'Bent_Over_Two-Dumbbell_Row',
+  row_high:   'Kneeling_High_Pulley_Row',
+  cable_fly:  'Cable_Crossover',            // montrait un écarté haltère sur banc
+  lat_raise:  'Seated_Side_Lateral_Raise',  // montrait une poulie, pas des haltères
+  calf:       'Standing_Calf_Raises',
+};
 
 /* Fusionne : corrige les images, applique zones + matériel, puis concatène */
 LIB.forEach(e => {
