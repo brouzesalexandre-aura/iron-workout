@@ -3175,7 +3175,6 @@ const Nutri = {
         : rlist.map(r=>{const m=recipeMacros(r);return `<div class="food-row" style="border-bottom:1px solid var(--border)" onclick="Nutri.qtyRecipe('${r.id}')"><div class="fi"><div class="fn">${r.emoji||'🍴'} ${esc(r.name)}</div><div class="fq">${Math.round(m.kcal)} kcal/portion</div></div><span style="color:var(--green);font-size:20px">+</span></div>`;}).join('') }</div>`;
   },
   _psetsub(s) { this._psub = s; Modal.setBody(this._addBody()); },
-  _psetsubRefresh(){ document.getElementById('addList'); },
   _paddsearch(q) { this._pq = q; const l = document.getElementById('addList'); const foods=[...S.nutrition.foods,...FOODS]; const recs=S.nutrition.recipes; const qq=q.toLowerCase();
     if (this._psub==='food'){ l.innerHTML = foods.filter(f=>!qq||f.name.toLowerCase().includes(qq)).map(f=>`<div class="food-row" style="border-bottom:1px solid var(--border)" onclick="Nutri.qtyFood('${f.id}')"><div class="fi"><div class="fn">${esc(f.name)}</div><div class="fq">${f.kcal} kcal · ${f.p}P ${f.c}G ${f.f}L / 100g</div></div><span style="color:var(--green);font-size:20px">+</span></div>`).join(''); }
     else { l.innerHTML = recs.filter(r=>!qq||r.name.toLowerCase().includes(qq)).map(r=>{const m=recipeMacros(r);return `<div class="food-row" style="border-bottom:1px solid var(--border)" onclick="Nutri.qtyRecipe('${r.id}')"><div class="fi"><div class="fn">${r.emoji||'🍴'} ${esc(r.name)}</div><div class="fq">${Math.round(m.kcal)} kcal/portion</div></div><span style="color:var(--green);font-size:20px">+</span></div>`;}).join(''); } },
@@ -3204,7 +3203,6 @@ const Nutri = {
       `<button class="btn wide ghost" onclick="Nutri.addToMeal('${this._pickFor}')">‹ Retour</button><button class="btn wide green" onclick="Nutri.confirmRecipe('${rid}')">Ajouter</button>`);
     this._rprev(rid);
     document.getElementById('qS').addEventListener('input', () => this._rprev(rid));
-    document.querySelectorAll('#qPrev').forEach(()=>{});
   },
   _rprev(rid) { const r = recipeById(rid); const s = +val('qS')||1; const m = recipeMacros(r); const b = document.querySelector('#qPrev .bt'); if (b) b.innerHTML = `<h4>${Math.round(m.kcal*s)} kcal</h4><p>${Math.round(m.p*s)}g P · ${Math.round(m.c*s)}g G · ${Math.round(m.f*s)}g L</p>`; },
   confirmRecipe(rid) {
